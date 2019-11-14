@@ -1,9 +1,19 @@
+import moment from 'moment';
+import * as R from 'ramda';
 import * as actionTypes from './action-types';
 
 const initialState = {
+  baseCurrency: '',
+  date: moment().format('YYYY-mm-dd'),
   rates: [],
   loading: false,
 };
+
+const toSortedRateList = R.compose(
+  R.sortBy(R.prop('currency')),
+  R.map(([currency, rate]) => ({ currency, rate })),
+  R.toPairs,
+);
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -18,7 +28,7 @@ const reducer = (state = initialState, action) => {
       const { rates } = action.payload;
       return {
         ...state,
-        rates,
+        rates: toSortedRateList(rates.rates),
         loading: false,
       };
     }

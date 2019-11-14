@@ -6,6 +6,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const store = configureStore();
+console.log(store.getState());
 
 ReactDOM.render(
   <Provider store={store}>

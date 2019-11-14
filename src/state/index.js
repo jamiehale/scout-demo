@@ -9,7 +9,6 @@ const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(
     rootReducer,
-    {},
     compose(
       applyMiddleware(
         sagaMiddleware,
