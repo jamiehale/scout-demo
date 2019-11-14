@@ -6,7 +6,7 @@ const Container = styled.div``;
 const RatesPanel = ({
   rates,
 }) => {
-  const rows = (rates || []).map(row => (
+  const rows = rates.map(row => (
     <tr>
       <td>{row.currency}</td>
       <td>{row.rate}</td>
