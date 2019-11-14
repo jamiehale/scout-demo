@@ -40,6 +40,12 @@ const reducer = (state = initialState, action) => {
         error,
       };
     }
+    case actionTypes.CLEAR_ERROR: {
+      return {
+        ...state,
+        error: undefined,
+      };
+    }
     default: {
       return state;
     }

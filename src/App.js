@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import useRates from './hooks/rates';
 import HeadPanel from './components/HeadPanel';
 import RatesPanel from './components/RatesPanel';
+import ErrorModal from './components/ErrorModal';
 
 const Container = styled.div``;
 
 const App = () => {
-  const { rates, isLoading, error, loadRates } = useRates();
+  const { rates, isLoading, error, loadRates, clearError } = useRates();
 
   return (
     <Container>
@@ -18,6 +19,12 @@ const App = () => {
       <RatesPanel
         rates={rates}
       />
+      {error && (
+        <ErrorModal
+          message={error}
+          onClose={clearError}
+        />
+      )}
     </Container>
   );
 }

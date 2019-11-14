@@ -17,3 +17,7 @@ export const loadRatesFailure = error => ({
     error,
   },
 });
+
+export const clearError = () => ({
+  type: actionTypes.CLEAR_ERROR,
+});

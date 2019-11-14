@@ -10,6 +10,10 @@ const useRates = () => {
     dispatch(actions.loadRatesRequest());
   }, [dispatch]);
 
+  const clearError = useCallback(() => {
+    dispatch(actions.clearError());
+  }, [dispatch]);
+
   const rates = useSelector(selectors.getRates);
   const isLoading = useSelector(selectors.isLoading);
   const error = useSelector(selectors.getError);
@@ -19,6 +23,7 @@ const useRates = () => {
     isLoading,
     error,
     loadRates,
+    clearError,
   };
 };
 

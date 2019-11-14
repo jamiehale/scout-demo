@@ -10,7 +10,7 @@ function* loadRates() {
     const { data: rates } = yield call(Api.fetchRates);
     yield put(actions.loadRatesSuccess(rates));
   } catch (e) {
-    yield put(actions.loadRatesFailure(e));
+    yield put(actions.loadRatesFailure(e.message));
   }
 }
 
