@@ -1,11 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from './Button';
 
 const Window = styled.div`
   padding: 16px;
   background: white;
   border: 2px solid black;
   border-radius: 8px;
+  max-width: 60ch;
+  h1 {
+    margin: 0px;
+    font-size: 1.5rem;
+  }
 `;
 
 const Screen = styled.div`
@@ -32,7 +38,7 @@ const ErrorModal = ({
     <Window>
       <h1>Error</h1>
       <p>{message}</p>
-      <button onClick={onClose}>OK</button>
+      <Button onClick={onClose}>OK</Button>
     </Window>
   </Screen>
 );

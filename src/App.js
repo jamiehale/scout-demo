@@ -1,24 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
 import useRates from './hooks/rates';
-import HeadPanel from './components/HeadPanel';
-import RatesPanel from './components/RatesPanel';
+import Button from './components/Button';
+import RatesTable from './components/RatesTable';
 import ErrorModal from './components/ErrorModal';
 
-const Container = styled.div``;
+const StyledRatesTable = styled(RatesTable)``;
+
+const Container = styled.div`
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  ${Button} {
+    margin-top: 32px;
+  }
+  ${StyledRatesTable} {
+    margin-top: 32px;
+  }
+`;
 
 const App = () => {
   const { rates, isLoading, error, loadRates, clearError } = useRates();
 
   return (
     <Container>
-      <HeadPanel
-        loadRates={loadRates}
-        isLoading={isLoading}
-      />
-      <RatesPanel
-        rates={rates}
-      />
+      <Button
+        onClick={loadRates}
+        disabled={isLoading}
+      >
+        {isLoading ? "Loading..." : "Load Rates"}
+      </Button>
+      {rates.length > 0 && (
+        <StyledRatesTable
+          rates={rates}
+        />
+      )}
       {error && (
         <ErrorModal
           message={error}
