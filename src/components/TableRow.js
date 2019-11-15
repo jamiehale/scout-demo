@@ -10,8 +10,14 @@ const TableRow = ({
   rate,
 }) => (
   <tr>
-    <TD align="left">{currency}</TD>
-    <TD align="right">{rate}</TD>
+    <TD
+      data-testid="currency-cell"
+      align="left"
+    >{currency}</TD>
+    <TD
+      data-testid="rate-cell"
+      align="right"
+    >{rate}</TD>
   </tr>
 );
 

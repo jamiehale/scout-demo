@@ -2,14 +2,14 @@ import React from 'react';
 import Button from './Button';
 
 const LoadButton = ({
-  className,
   isLoading,
   onLoadRates,
+  ...props,
 }) => (
   <Button
-    className={className}
     onClick={onLoadRates}
     disabled={isLoading}
+    {...props}
   >
     {isLoading ? "Loading..." : "Load Rates"}
   </Button>

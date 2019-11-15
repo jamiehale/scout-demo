@@ -6,6 +6,7 @@ import RatesTable from './components/RatesTable';
 import ErrorModal from './components/ErrorModal';
 
 const StyledRatesTable = styled(RatesTable)``;
+
 const StyledLoadButton = styled(LoadButton)``;
 
 const Container = styled.div`
@@ -27,16 +28,19 @@ const App = () => {
   return (
     <Container>
       <StyledLoadButton
+        data-testid="load-button"
         isLoading={isLoading}
         onLoadRates={loadRates}
       />
       {rates.length > 0 && (
         <StyledRatesTable
+          data-testid="rates-table"
           rates={rates}
         />
       )}
       {error && (
         <ErrorModal
+          data-testid="error-modal"
           message={error}
           onClose={clearError}
         />

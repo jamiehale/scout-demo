@@ -24,7 +24,6 @@ const reducer = (state = initialState, action) => {
     case actionTypes.LOAD_RATES_SUCCESS: {
       const { rates } = action.payload;
       return {
-        ...state,
         rates: toSortedRateList(rates),
         loading: false,
       };
@@ -32,7 +31,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.LOAD_RATES_FAILURE: {
       const { error } = action.payload;
       return {
-        ...state,
+        rates: [],
         loading: false,
         error,
       };

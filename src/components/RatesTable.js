@@ -17,8 +17,8 @@ const TH = styled.th`
 `;
 
 const RatesTable = ({
-  className,
   rates,
+  ...props,
 }) => {
   const rows = rates.map(row => (
     <TableRow
@@ -29,7 +29,7 @@ const RatesTable = ({
   ));
 
   return (
-    <Container className={className}>
+    <Container {...props}>
       <Table>
         <thead>
           <tr>
