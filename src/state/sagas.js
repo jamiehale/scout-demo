@@ -3,12 +3,10 @@ import * as actionTypes from './action-types';
 import * as actions from './actions';
 import Api from '../api';
 
-export const delay = t => new Promise(resolve => setTimeout(resolve, t));
-
 function* loadRates() {
   try {
     const { data: rates } = yield call(Api.fetchRates);
-    yield put(actions.loadRatesSuccess(rates));
+    yield put(actions.loadRatesSuccess(rates.rates));
   } catch (e) {
     yield put(actions.loadRatesFailure(e.message));
   }

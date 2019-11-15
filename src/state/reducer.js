@@ -1,10 +1,7 @@
-import moment from 'moment';
 import * as R from 'ramda';
 import * as actionTypes from './action-types';
 
 const initialState = {
-  baseCurrency: '',
-  date: moment().format('YYYY-mm-dd'),
   rates: [],
   loading: false,
 };
@@ -28,7 +25,7 @@ const reducer = (state = initialState, action) => {
       const { rates } = action.payload;
       return {
         ...state,
-        rates: toSortedRateList(rates.rates),
+        rates: toSortedRateList(rates),
         loading: false,
       };
     }
