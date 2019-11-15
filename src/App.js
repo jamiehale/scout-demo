@@ -1,18 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
 import useRates from './hooks/rates';
-import Button from './components/Button';
+import LoadButton from './components/LoadButton';
 import RatesTable from './components/RatesTable';
 import ErrorModal from './components/ErrorModal';
 
 const StyledRatesTable = styled(RatesTable)``;
+const StyledLoadButton = styled(LoadButton)``;
 
 const Container = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  ${Button} {
+  ${StyledLoadButton} {
     margin-top: 32px;
   }
   ${StyledRatesTable} {
@@ -25,12 +26,10 @@ const App = () => {
 
   return (
     <Container>
-      <Button
-        onClick={loadRates}
-        disabled={isLoading}
-      >
-        {isLoading ? "Loading..." : "Load Rates"}
-      </Button>
+      <StyledLoadButton
+        isLoading={isLoading}
+        onLoadRates={loadRates}
+      />
       {rates.length > 0 && (
         <StyledRatesTable
           rates={rates}
